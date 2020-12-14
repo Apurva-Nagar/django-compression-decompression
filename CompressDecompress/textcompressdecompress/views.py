@@ -11,17 +11,9 @@ class Home(TemplateView):
 def text_file_upload(request):
     if request.method == 'POST' and request.FILES['myfile']:
         try:
-            request.POST['compress']
-            mode = 'compress'
-            #print('MODE = COMPRESS')
+            mode = request.POST['mode']
         except:
-            try:
-                request.POST['decompress']
-                mode = 'decompress'
-                #print('MODE = DECOMPRESS')
-            except:
-                mode = None
-                #print('ERROR: NO MODE')
+            mode = None
 
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
@@ -34,9 +26,7 @@ def text_file_upload(request):
         if mode is None:
             mode_error = True
         else:
-            print(BASE_FILE_URL+uploaded_file_url)
             output_path = main(mode, BASE_FILE_URL + uploaded_file_url)
-            print(output_path)
 
         return render(request, 'textcompressdecompress/index.html', {
             'uploaded_file_url': uploaded_file_url, 

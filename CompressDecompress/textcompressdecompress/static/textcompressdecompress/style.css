@@ -1,34 +1,40 @@
 body {
-    background-image: linear-gradient(to bottom right, #380036 , #0CBABA);
-    margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: 'Open Sans', sans-serif;
-    color: #fff;
-    margin: 0px;
+  background-image: linear-gradient(to bottom right, #380036, #0cbaba);
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  margin: 0px;
 }
 
 h1 {
-    color: #fff;
+  color: #fff;
+}
+
+.navbar-brand {
+  font-weight: 600;
 }
 
 .file_upload {
-    color: #fff;
+  color: #fff;
 }
 
 #upload_container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    margin-top: 60px;
-    background-color: #fff;
-    color: black;
-    padding: 15px;
-    width: 40%;
-    border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 60px;
+  background-color: #fff;
+  color: black;
+  padding: 15px;
+  width: 40%;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px black, 3px 3px 10px black;
 }
 
 section label {
-    color: black;
+  color: black;
 }

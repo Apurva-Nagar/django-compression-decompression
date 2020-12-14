@@ -19,9 +19,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">[Placeholder]</a>
-                </li>
             </ul>
         </nav>
 
@@ -32,17 +29,17 @@
                 <br/>
                 <label>Select a mode:</label>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio1" name="compress" class="custom-control-input">
+                    <input type="radio" id="customRadio1" name="mode" value="compress" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio1">Compress</label>
                   </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio2" name="decompress" class="custom-control-input">
+                    <input type="radio" id="customRadio2" name="mode" value="decompress" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio2">Decompress</label>
                 </div>
                 <br/>
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="myfile"/>
+                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="myfile" required/>
                         <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
                     </div>
                     
@@ -57,14 +54,15 @@
                     })
                 </script>
             </form>
-            <!-- {% if uploaded_file_url %}
-                <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-            {% endif %} -->
             {% if mode_error %}
-                <p>Please select a mode.</p>
+                <div class="alert alert-danger" role="alert">
+                    Please select a mode for workng with the file.
+                  </div>
             {% else %}
                 {% if output_path %}
-                    <p>Done...<a href="{{ output_path }}" download>Download</a></p>
+                    <div class="alert alert-success" role="alert">
+                        <p>Done... Please <a href="{{ output_path }}" download>Download</a> by clicking the link.</p>
+                    </div>
                 {% endif %}
             {% endif %}
         </section>
