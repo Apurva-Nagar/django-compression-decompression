@@ -54,10 +54,17 @@
                     })
                 </script>
             </form>
-            {% if mode_error %}
+            {% if error %}
+                {% if mode_error %}
                 <div class="alert alert-danger" role="alert">
-                    Please select a mode for workng with the file.
-                  </div>
+                    Please select a mode for working with the file.
+                </div>
+                {% endif%}
+                {% if ext_error %}
+                <div class="alert alert-danger" role="alert">
+                    Supported file formats: .txt & .bin
+                </div>
+                {% endif%}
             {% else %}
                 {% if output_path %}
                     <div class="alert alert-success" role="alert">

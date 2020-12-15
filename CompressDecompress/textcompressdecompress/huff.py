@@ -176,11 +176,11 @@ def main(run_mode, source):
 	input_path = source 
 	output_path = ''
 	if mode == 'compress':
-		output_path = input_path.split('.')[0] + 'Compressed.bin'
+		output_path = input_path.split('.')[0] + '.bin'
 		encoder = HuffmanEncoder(input_path, output_path)
 		runEncoder(encoder, input_path, output_path)
 	elif mode == 'decompress':
-		output_path = input_path.split('.')[0][:-1*len('Compressed')] + 'Decompressed.txt'
+		output_path = input_path.split('.')[0] + '.txt'
 		decoder = HuffmanDecoder(input_path, output_path)
 		decoder.decodeFile()
 		print("Decompression Successful.")

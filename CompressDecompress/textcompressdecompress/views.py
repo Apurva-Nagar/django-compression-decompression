@@ -19,19 +19,22 @@ def text_file_upload(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
+        extension = uploaded_file_url.split('.')[-1] 
 
         BASE_FILE_URL = '/mnt/c/Users/apurv/Documents/Programming/DjangoCompressDecompress/CompressDecompress'
-        mode_error = False
-        output_path = None
-        if mode is None:
-            mode_error = True
-        else:
-            output_path = main(mode, BASE_FILE_URL + uploaded_file_url)
+        
+        mode_error = True if mode is None else False 
+        ext_error = False if extension == 'txt' or extension == 'bin' else True
+        error = True if mode_error or ext_error else False
+
+        output_path = None if error else main(mode, BASE_FILE_URL + uploaded_file_url)
 
         return render(request, 'textcompressdecompress/index.html', {
             'uploaded_file_url': uploaded_file_url, 
+            'error': error,
             'mode_error': mode_error,
-            'output_path': output_path
+            'ext_error': ext_error,
+            'output_path': output_path,
         })
     return render(request, 'textcompressdecompress/index.html')
 
